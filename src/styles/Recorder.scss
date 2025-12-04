@@ -1,49 +1,83 @@
-.rec-container {
-    width: 620px;
+// src/styles/recorder.scss
+
+.recorder {
+    background: #1f2a2f;
     padding: 20px;
-    background: #111;
-    color: white;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+    border: 2px solid #8eff64;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
   
-  .wave-wrapper {
-    background: #1c1c1c;
-    height: 80px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* ensures bars NEVER cross boundary */
-  }
+    .wave-wrapper {
+      border: 1px solid #8eff64;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
   
-  .wave-placeholder {
-    font-size: 14px;
-    opacity: 0.6;
-  }
+    .waveform {
+      width: 100%;
+      height: 80px;
+    }
   
-  .controls {
-    display: flex;
-    gap: 10px;
+    .timer {
+      display: flex;
+      justify-content: space-between;
+      color: #8eff64;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
   
-    button {
-      padding: 8px 16px;
-      background: #222;
-      border: 1px solid #444;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
   
-      &:hover {
-        background: #333;
+      button {
+        background: #2e3a42;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+  
+        &:hover {
+          background: #3c4a52;
+        }
+      }
+  
+      .mic {
+        background: #8eff64;
+        color: black;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 22px;
+      }
+  
+      .stop {
+        background: #e35050;
+      }
+  
+      .upload {
+        background: #8eff64;
+        color: black;
+      }
+  
+      .play, .pause {
+        background: #3c4a52;
+      }
+  
+      .reset {
+        background: #3c4a52;
+      }
+  
+      .delete {
+        background: #d9534f;
       }
     }
-  }
-  
-  .time-limit {
-    opacity: 0.6;
-    font-size: 12px;
   }
   
