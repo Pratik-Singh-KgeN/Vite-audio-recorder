@@ -1,0 +1,49 @@
+.rec-container {
+    width: 620px;
+    padding: 20px;
+    background: #111;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .wave-wrapper {
+    background: #1c1c1c;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* ensures bars NEVER cross boundary */
+  }
+  
+  .wave-placeholder {
+    font-size: 14px;
+    opacity: 0.6;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 10px;
+  
+    button {
+      padding: 8px 16px;
+      background: #222;
+      border: 1px solid #444;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:hover {
+        background: #333;
+      }
+    }
+  }
+  
+  .time-limit {
+    opacity: 0.6;
+    font-size: 12px;
+  }
+  
