@@ -29,13 +29,12 @@ const formatTime = (seconds) => {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [mode, setMode] = useState(MODES.LIMITED); // Default to limited
-    const [recordedUrl, setRecordedUrl] = useState(null);
+    const [_recordedUrl, setRecordedUrl] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
   
     // --- Visual Config ---
     const maxDuration = 30; // 30 seconds limit for 'limited' mode
     const primaryColor = '#8CFF05'; // Lime-400
-    const progressColor = '#8CFF05'; // Lime-200
     const waveHeight = 50;
   
     // --- Initialize WaveSurfer ---
@@ -51,7 +50,7 @@ const formatTime = (seconds) => {
       const ws = WaveSurfer.create({
         container: containerRef.current,
         waveColor: primaryColor,
-        progressColor: progressColor,
+        progressColor: '#bef264',
         height: waveHeight,
         barWidth: 2,
         barGap: 3,
@@ -81,7 +80,12 @@ const formatTime = (seconds) => {
         
         // Auto-stop for limited mode logic
         if (mode === MODES.LIMITED && currentSecs >= maxDuration) {
-          stopRecording();
+          setTimeout(() => {
+            if (recordPluginRef.current) {
+              recordPluginRef.current.stopRecording();
+              setRecorderState('finished');
+            }
+          }, 100);
         }
       });
   
@@ -108,7 +112,17 @@ const formatTime = (seconds) => {
         }
       };
     }, [mode]);
-  
+
+    // --- Update waveform colors when recording finishes ---
+    useEffect(() => {
+      if (wavesurferRef.current && recorderState === 'finished') {
+        wavesurferRef.current.setOptions({
+          waveColor: '#ffffff',
+          progressColor: primaryColor,
+        });
+      }
+    }, [recorderState, primaryColor]);
+
     // --- Actions ---
   
     const startRecording = async () => {
@@ -212,7 +226,12 @@ const formatTime = (seconds) => {
   
             {/* --- Waveform Visualization Area --- */}
             <div className="waveform-container">
-              <div className="waveform-background"></div>
+              <div 
+                className="waveform-background"
+                style={{ 
+                  opacity: recorderState === 'finished' ? 0 : 0.2 
+                }}
+              ></div>
               <div 
                 ref={containerRef} 
                 className="waveform-wrapper"

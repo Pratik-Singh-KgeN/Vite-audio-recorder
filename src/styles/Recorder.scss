@@ -147,6 +147,7 @@ $red-400: #f87171;
       transparent 2px,
       transparent 5px
     );
+    @include transition(opacity, 0.3s);
   }
 
   .waveform-wrapper {
