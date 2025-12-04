@@ -34,9 +34,9 @@ const formatTime = (seconds) => {
   
     // --- Visual Config ---
     const maxDuration = 30; // 30 seconds limit for 'limited' mode
-    const primaryColor = '#a3e635'; // Lime-400
-    const progressColor = '#d9f99d'; // Lime-200
-    const waveHeight = 80;
+    const primaryColor = '#8CFF05'; // Lime-400
+    const progressColor = '#8CFF05'; // Lime-200
+    const waveHeight = 50;
   
     // --- Initialize WaveSurfer ---
     useEffect(() => {
